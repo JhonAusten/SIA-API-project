@@ -52,7 +52,94 @@ window.quotesDatabase = [
         text: "Life is like riding a bicycle. To keep your balance, you must keep moving.",
         author: "Albert Einstein"
     },
+     // Mahatma Gandhi
+    {
+        text: "Be the change that you wish to see in the world.",
+        author: "Mahatma Gandhi"
+    },
+    {
+        text: "In a gentle way, you can shake the world.",
+        author: "Mahatma Gandhi"
+    },
 
+    // Benjamin Franklin
+    {
+        text: "Well done is better than well said.",
+        author: "Benjamin Franklin"
+    },
+    {
+        text: "Energy and persistence conquer all things.",
+        author: "Benjamin Franklin"
+    },
+
+    // Thomas Edison
+    {
+        text: "Genius is one percent inspiration and ninety-nine percent perspiration.",
+        author: "Thomas Edison"
+    },
+    {
+        text: "Our greatest weakness lies in giving up. The most certain way to succeed is always to try just one more time.",
+        author: "Thomas Edison"
+    },
+
+    // J.K. Rowling
+    {
+        text: "It is our choices, Harry, that show what we truly are, far more than our abilities.",
+        author: "J.K. Rowling"
+    },
+    {
+        text: "Rock bottom became the solid foundation on which I rebuilt my life.",
+        author: "J.K. Rowling"
+    },
+
+    // Paulo Coelho
+    {
+        text: "When you want something, all the universe conspires in helping you to achieve it.",
+        author: "Paulo Coelho"
+    },
+    {
+        text: "One day you will wake up and there won’t be any more time to do the things you’ve always wanted. Do it now.",
+        author: "Paulo Coelho"
+    },
+
+    // Sheryl Sandberg
+    {
+        text: "Done is better than perfect.",
+        author: "Sheryl Sandberg"
+    },
+
+    // Japanese Proverb
+    {
+        text: "Fall seven times and stand up eight.",
+        author: "Japanese Proverb"
+    },
+
+    // African Proverb
+    {
+        text: "If you want to go fast, go alone. If you want to go far, go together.",
+        author: "African Proverb"
+    },
+
+    // Seneca (Stoic Philosopher)
+    {
+        text: "Luck is what happens when preparation meets opportunity.",
+        author: "Seneca"
+    },
+    {
+        text: "It is not the man who has too little, but the man who craves more, that is poor.",
+        author: "Seneca"
+    },
+
+    // Marcus Aurelius
+    {
+        text: "You have power over your mind — not outside events. Realize this, and you will find strength.",
+        author: "Marcus Aurelius"
+    },
+    {
+        text: "The happiness of your life depends upon the quality of your thoughts.",
+        author: "Marcus Aurelius"
+    },
+    
     // Walt Disney
     {
         text: "The way to get started is to quit talking and begin doing.",
@@ -360,4 +447,5 @@ if (typeof module !== 'undefined' && module.exports) {
 }
 
 // Console log for confirmation
+
 console.log(`Quotes database loaded successfully with ${window.quotesDatabase.length} quotes`);
