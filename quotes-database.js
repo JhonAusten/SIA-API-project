@@ -443,6 +443,65 @@ window.quotesDatabase = [
     {
         text: "Life isn't about waiting for the storm to pass, it's about learning how to dance in the rain.",
         author: "Vivian Greene"
+    },
+    // Nelson Mandela
+    {
+    text: "It always seems impossible until it’s done.",
+    author: "Nelson Mandela"
+    },
+
+    // Winston Churchill
+    {
+    text: "Success is not final, failure is not fatal: it is the courage to continue that counts.",
+    author: "Winston Churchill"
+    },
+
+    // Dalai Lama
+    {
+    text: "Happiness is not something ready made. It comes from your own actions.",
+    author: "Dalai Lama"
+    },
+
+    // Theodore Roosevelt
+    {
+    text: "Do what you can, with what you have, where you are.",
+    author: "Theodore Roosevelt"
+    },
+
+    // Muhammad Ali
+    {
+    text: "Don’t count the days, make the days count.",
+    author: "Muhammad Ali"
+    },
+
+    // Steve Jobs
+    {
+    text: "Your time is limited, so don’t waste it living someone else’s life.",
+    author: "Steve Jobs"
+    },
+
+    // Peter Drucker
+    {
+    text: "The best way to predict the future is to create it.",
+    author: "Peter Drucker"
+    },
+
+    // C.S. Lewis
+    {
+    text: "Hardships often prepare ordinary people for an extraordinary destiny.",
+    author: "C.S. Lewis"
+    },
+
+    // Arthur Ashe
+    {
+    text: "Start where you are. Use what you have. Do what you can.",
+    author: "Arthur Ashe"
+    },
+
+    // Chinese Proverb
+    {
+    text: "A journey of a thousand miles begins with a single step.",
+    author: "Chinese Proverb"
     }
 ];
 
@@ -454,5 +513,6 @@ if (typeof module !== 'undefined' && module.exports) {
 // Console log for confirmation
 
 console.log(`Quotes database loaded successfully with ${window.quotesDatabase.length} quotes`);
+
 
 
