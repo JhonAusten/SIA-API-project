@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Motivational Quotes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            font-weight: 300;
+        }
+
+        .quote-container {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-left: 5px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .quote-text {
+            font-size: 1.4em;
+            line-height: 1.6;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-style: italic;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .quote-author {
+            font-size: 1.1em;
+            color: #7f8c8d;
+            font-weight: 500;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        button {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button:disabled {
+            background: #bdc3c7;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .loading {
+            display: none;
+            color: #667eea;
+            font-size: 1.1em;
+        }
+
+        .loading.show {
+            display: block;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .quote-text {
+                font-size: 1.2em;
+            }
+            
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            button {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌟 Motivational Quotes</h1>
+        
+        <div class="quote-container">
+            <div class="quote-text" id="quoteText">Click "Get Quote" to start your inspiration journey!</div>
+            <div class="quote-author" id="quoteAuthor"></div>
+        </div>
+
+        <div class="loading" id="loading">🔄 Loading inspiration...</div>
+
+        <div class="buttons">
+            <button onclick="getRandomQuote()" id="getQuoteBtn">Get Quote</button>
+        </div>
+    </div>
+
+    <!-- Load the separate database file -->
+    <script src="quotes-database.js"></script>
+    
+    <script>
+        // Application State
+        let currentQuote = null;
+
+        // Display quote function
+        function displayQuote(quote) {
+            if (!quote) return;
+
+            const quoteTextEl = document.getElementById('quoteText');
+            const quoteAuthorEl = document.getElementById('quoteAuthor');
+
+            quoteTextEl.textContent = `"${quote.text}"`;
+            quoteAuthorEl.textContent = `— ${quote.author}`;
+
+            currentQuote = quote;
+        }
+
+        // Get random quote from database
+        function getRandomQuote() {
+            showLoading();
+            
+            setTimeout(() => {
+                if (!window.quotesDatabase || !Array.isArray(window.quotesDatabase)) {
+                    console.error('Quotes database not loaded or invalid');
+                    displayFallbackQuote();
+                    hideLoading();
+                    return;
+                }
+
+                const randomIndex = Math.floor(Math.random() * window.quotesDatabase.length);
+                const quote = window.quotesDatabase[randomIndex];
+                
+                displayQuote(quote);
+                hideLoading();
+            }, 300); // Brief loading for better UX
+        }
+
+        // Fallback quote if database fails to load
+        function displayFallbackQuote() {
+            const fallbackQuote = {
+                text: "The only way to do great work is to love what you do.",
+                author: "Steve Jobs"
+            };
+            displayQuote(fallbackQuote);
+        }
+
+        // UI Helper functions
+        function showLoading() {
+            document.getElementById('loading').classList.add('show');
+            document.getElementById('getQuoteBtn').disabled = true;
+        }
+
+        function hideLoading() {
+            document.getElementById('loading').classList.remove('show');
+            document.getElementById('getQuoteBtn').disabled = false;
+        }
+
+        // Initialize the application
+        function initializeApp() {
+            console.log('Initializing Quote App...');
+            
+            // Check if database is loaded
+            if (window.quotesDatabase && Array.isArray(window.quotesDatabase)) {
+                console.log(`Database loaded successfully with ${window.quotesDatabase.length} quotes`);
+                getRandomQuote(); // Load initial quote
+            } else {
+                console.error('Failed to load quotes database');
+                displayFallbackQuote();
+            }
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (event) => {
+            if (event.target.tagName !== 'INPUT' && event.key === ' ') {
+                event.preventDefault();
+                getRandomQuote();
+            }
+        });
+
+        // Initialize app when page loads
+        window.addEventListener('load', initializeApp);
+    </script>
+</body>
+</html>
