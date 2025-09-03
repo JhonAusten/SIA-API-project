@@ -9,6 +9,10 @@ window.quotesDatabase = [
         author: "Steve Jobs"
     },
     {
+    text: "Success is not final, failure is not fatal: it is the courage to continue that counts.",
+    author: "Winston Churchill"
+    },
+    {
         text: "Innovation distinguishes between a leader and a follower.",
         author: "Steve Jobs"
     },
@@ -449,3 +453,4 @@ if (typeof module !== 'undefined' && module.exports) {
 // Console log for confirmation
 
 console.log(`Quotes database loaded successfully with ${window.quotesDatabase.length} quotes`);
+
