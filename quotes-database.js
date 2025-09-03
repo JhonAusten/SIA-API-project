@@ -2,6 +2,7 @@
 // Motivational Quotes Database
 // Last updated: 2025
 
+
 window.quotesDatabase = [
     // Steve Jobs & Apple
     {
@@ -453,4 +454,5 @@ if (typeof module !== 'undefined' && module.exports) {
 // Console log for confirmation
 
 console.log(`Quotes database loaded successfully with ${window.quotesDatabase.length} quotes`);
+
 
